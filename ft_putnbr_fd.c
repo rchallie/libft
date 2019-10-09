@@ -6,7 +6,7 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 13:56:11 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/07 14:13:58 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/08 16:30:39 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	char c;
+
 	if (n == -2147483648)
 		write(fd, "-2147483648", 11);
 	else
@@ -25,7 +26,7 @@ void	ft_putnbr_fd(int n, int fd)
 			n = -n;
 			ft_putnbr_fd(n, fd);
 		}
-	   	else if (n < 10)
+		else if (n < 10)
 		{
 			c = n + '0';
 			write(fd, &c, 1);

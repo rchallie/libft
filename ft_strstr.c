@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 15:54:34 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/08 16:54:48 by rchallie         ###   ########.fr       */
+/*   Created: 2019/10/08 14:16:16 by rchallie          #+#    #+#             */
+/*   Updated: 2019/10/08 16:54:21 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	long	i;
-	long	nbr;
-	int		isneg;
+	size_t	i;
+	size_t	c;
+	size_t	n_len;
+	char	*hay;
+	char	*need;
 
 	i = 0;
-	nbr = 0;
-	isneg = 0;
-	while (str[i] != '\0' && (str[i] == 32 || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
-		i++;
-	if (str[i] != '\0' && str[i] == '-')
+	hay = (char *)haystack;
+	need = (char *)needle;
+	n_len = ft_strlen(needle);
+	if (n_len == 0 || haystack == needle)
+		return (hay);
+	while (hay[i] != '\0')
 	{
-		isneg = 1;
+		c = 0;
+		while (hay[i + c] != '\0' && needle[c] != '\0'
+			&& hay[i + c] == needle[c])
+			c++;
+		if (c == n_len)
+			return (hay + i);
 		i++;
 	}
-	while (str[i] != '\0' && ft_isdigit(str[i]))
-		nbr = (nbr * 10) + (str[i++] - '0');
-	if (isneg == 1)
-		return (-nbr);
-	return (nbr);
+	return (0);
 }

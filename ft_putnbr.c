@@ -6,7 +6,7 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:53:24 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/07 16:55:00 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/08 16:26:28 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putnbr(int nbr)
 {
-	ft_putnbr_fd(nbr, 1);	
+	ft_putnbr_fd(nbr, 1);
 }

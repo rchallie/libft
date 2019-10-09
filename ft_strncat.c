@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 10:50:07 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/08 18:58:03 by rchallie         ###   ########.fr       */
+/*   Created: 2019/10/09 14:50:23 by rchallie          #+#    #+#             */
+/*   Updated: 2019/10/09 15:04:49 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-int		main(int argc, char **argv)
+char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
 {
-	(void)argc;
-	(void)argv;
+	size_t i;
+	size_t c;
+
+	i = 0;
+	c = ft_strlen(s1);
+	while (s2[i] && i < n)
+	{
+		s1[c + i] = s2[i];
+	   	i++;
+	}
+	s1[c + i] = '\0';
+	return (s1);
 }

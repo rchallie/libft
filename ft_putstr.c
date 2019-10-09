@@ -6,7 +6,7 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:48:04 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/07 16:51:55 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/08 16:27:39 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	ft_putstr(const char *str)
 
 	i = 0;
 	if (str != 0)
-		while(str[i] != '\0')
+		while (str[i] != '\0')
 			write(1, &str[i++], 1);
 }

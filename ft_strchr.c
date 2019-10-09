@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 10:50:07 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/08 18:58:03 by rchallie         ###   ########.fr       */
+/*   Created: 2019/10/08 17:32:21 by rchallie          #+#    #+#             */
+/*   Updated: 2019/10/09 14:22:33 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <string.h>
-
-int		main(int argc, char **argv)
+char	*ft_strchr(const char *s, int c)
 {
-	(void)argc;
-	(void)argv;
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+		   return ((char *)s + i);
+		i++;	
+	}
+	if (s[i] == c)
+		return ((char *)s + i);
+	return (0);
 }
