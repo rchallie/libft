@@ -6,7 +6,7 @@
 /*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 11:03:52 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/10 11:24:58 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/10 18:55:51 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ void		*ft_memset(void *b, int c, size_t len);
 void		ft_bzero(void *s, size_t n);
 void		*ft_memcpy(void	*dst, const void *src, size_t n);
 char		*ft_strdup(const char *s);
+char		*ft_strcpy(char * dst, const char * src);
+char		*ft_strnew(size_t size);
+char		*ft_strncpy(char * dst, const char * src, size_t len);
 #endif
 
