@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 16:43:42 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/10 14:32:17 by rchallie         ###   ########.fr       */
+/*   Created: 2019/10/10 10:18:07 by rchallie          #+#    #+#             */
+/*   Updated: 2019/10/10 11:01:30 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putchar(int c)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	char cc;
-
-	cc = (char)c;
-	write(1, &cc, 1);
-	return (c);
+	return (ft_memcpy(dst, src, ft_strlen(src) + 1));
 }
