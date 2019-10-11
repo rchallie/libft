@@ -6,7 +6,7 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:54:46 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/10 18:57:37 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/11 13:40:35 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ size_t	ft_estim_end(const char *s1, const char *set)
 	size_t i;
 	size_t j;
 	size_t len;
-	
+
 	len = ft_strlen(s1);
 	i = len - 1;
-	while(i >= 0)
+	while(i >= 0) 
 	{
 		j = 0;
 		while(set[j])
@@ -62,19 +62,28 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t end;
 	size_t len;
 	char *rtn;
-
+	set = "\t\n\r\v\f "; //ATT
+	
+	if (!s1)
+		return (0);
 	start = ft_estim_start(s1, set);
 	end = ft_estim_end(s1, set);
-	len = ft_strlen(s1) - (start + end);
-	rtn = ft_strnew(len + 1);
-	ft_strncpy(rtn, (const char *)(s1 + (start - 1)), len);
-	rtn[len - 1] = '\0';
+	len = (ft_strlen(s1) - (start + end));
+	if((int)len < 0)
+	{
+		rtn = ft_strnew(1);
+		if(!rtn)
+			return (0);
+		else
+			rtn = "";
+	}
+	else		
+	{
+		rtn = ft_strnew(len);
+		if(!rtn)
+			return (0);
+		ft_strncpy(rtn, (const char *)(s1 + (start)), len);
+		rtn[len] = '\0';
+	}
 	return (rtn);
 }
-
-/*int main()
-{	
-	char *test = ft_strtrim("   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n", " \t\n");
-	ft_putstr(test);
-	return (0);
-}*/

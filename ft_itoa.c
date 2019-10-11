@@ -6,13 +6,13 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:29:57 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/10 18:01:54 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/11 15:56:56 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_estim(int n)
+int		ft_estim(long n)
 {
 	size_t estim;
 	int isneg;
@@ -33,46 +33,36 @@ int		ft_estim(int n)
 	return (estim);
 }
 
-char	*ft_iszero()
-{
-	char *rtn;
-
-	rtn = malloc(sizeof(char) * 2);
-	rtn[0] = '0';
-	rtn[1] = '\0';
-	return (rtn);
-}
-
 char	*ft_itoa(int n)
 {
     int len;
     char *rtn;
     int isneg;
+	long nbr;
 
-    len = ft_estim(n);
-	if (n == (-2147483647 -1))
-      	return (rtn = ft_strdup("-2147483648"));
-	else if (n != 0)
+	nbr = n;
+    len = ft_estim(nbr);
+	if (n != 0)
     	rtn = malloc(sizeof(char) * (len + 1));
 	else
-		return (rtn = ft_iszero());	
+		return (rtn = ft_strdup("0"));	
 	if (!rtn)
       return (0);
     isneg = 0;
 	if(n < 0)
     {
         isneg++;
-        n = -n;
+        nbr = -nbr;
     }
     rtn[len] = '\0';
     while (--len)
     {
-        rtn[len] = (n % 10) + '0';
-        n /= 10;
+        rtn[len] = (nbr % 10) + '0';
+        nbr /= 10;
     }
 	if(isneg == 1)
 		rtn[0] = '-';
 	else
-		rtn[0] = (n % 10) + '0';
+		rtn[0] = (nbr % 10) + '0';
     return (rtn);
 }
