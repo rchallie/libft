@@ -6,7 +6,7 @@
 #    By: rchallie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 11:05:52 by rchallie          #+#    #+#              #
-#    Updated: 2019/10/15 10:10:38 by rchallie         ###   ########.fr        #
+#    Updated: 2019/10/15 14:20:44 by rchallie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,14 +53,13 @@ CC_FLAGS = -Wall -Wextra -Werror
 $(NAME):
 	$(CC) $(SRCS) libft.h $(CC_FLAGS)
 	ar r $(NAME) *.o
-	rm -f *.o
 
 all: $(NAME)
 
 clean:
 	rm -f *.o
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all

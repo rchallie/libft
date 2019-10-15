@@ -6,13 +6,13 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:51:19 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/14 16:47:04 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/15 14:02:50 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_hm(char const *s, char c)
+static int		ft_hm(char const *s, char c)
 {
 	size_t	nbr;
 	int		i;
@@ -33,7 +33,7 @@ int		ft_hm(char const *s, char c)
 	return (nbr);
 }
 
-char	**ft_mal(char **strs, char const *s, char c)
+static char		**ft_mal(char **strs, char const *s, char c)
 {
 	size_t	count;
 	int		i;
@@ -62,7 +62,7 @@ char	**ft_mal(char **strs, char const *s, char c)
 	return (strs);
 }
 
-char	**ft_cpy(char **strs, char const *s, char c)
+static char		**ft_cpy(char **strs, char const *s, char c)
 {
 	int i;
 	int j;
@@ -89,7 +89,7 @@ char	**ft_cpy(char **strs, char const *s, char c)
 	return (strs);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**rtn;
 	int		nbr_w;

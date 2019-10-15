@@ -6,13 +6,13 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:29:57 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/14 17:36:29 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/15 14:01:57 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_estim(long n)
+static int		ft_estim(long n)
 {
 	size_t	estim;
 	int		isneg;
@@ -33,7 +33,7 @@ int		ft_estim(long n)
 	return (estim);
 }
 
-char	*ft_gen(char *rtn, long nbr, int len, int isneg)
+static char		*ft_gen(char *rtn, long nbr, int len, int isneg)
 {
 	if (nbr != 0)
 		rtn = malloc(sizeof(char) * (len + 1));
@@ -60,7 +60,7 @@ char	*ft_gen(char *rtn, long nbr, int len, int isneg)
 	return (rtn);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	int		len;
 	char	*rtn;

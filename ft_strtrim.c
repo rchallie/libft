@@ -6,13 +6,13 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:54:46 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/15 09:58:07 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/15 14:03:21 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_snew(size_t size)
+static char		*ft_snew(size_t size)
 {
 	char *rtn;
 
@@ -23,7 +23,7 @@ char	*ft_snew(size_t size)
 	return (rtn);
 }
 
-size_t	ft_estim_start(const char *s1, const char *set)
+static size_t	ft_estim_start(const char *s1, const char *set)
 {
 	size_t i;
 	size_t j;
@@ -44,7 +44,7 @@ size_t	ft_estim_start(const char *s1, const char *set)
 	return (0);
 }
 
-size_t	ft_estim_end(const char *s1, const char *set)
+static size_t	ft_estim_end(const char *s1, const char *set)
 {
 	size_t i;
 	size_t j;
@@ -67,7 +67,7 @@ size_t	ft_estim_end(const char *s1, const char *set)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char			*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
@@ -91,7 +91,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		if (!(rtn = ft_snew(len)))
 			return (0);
 		ft_strlcpy(rtn, (const char *)(s1 + (start)), len + 1);
-		//rtn[len] = '\0';
 	}
 	return (rtn);
 }
