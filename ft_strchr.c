@@ -6,7 +6,7 @@
 /*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:32:21 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/09 14:22:33 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/14 16:52:45 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i])
 	{
 		if (s[i] == c)
-		   return ((char *)s + i);
-		i++;	
+			return ((char *)s + i);
+		i++;
 	}
 	if (s[i] == c)
 		return ((char *)s + i);

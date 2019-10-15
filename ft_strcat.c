@@ -6,7 +6,7 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:33:38 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/09 14:48:14 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/14 16:56:28 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ char	*ft_strcat(char *s1, const char *s2)
 {
 	int i;
 	int c;
-	
+
 	i = 0;
 	c = ft_strlen(s1);
 	while (s2[i])
 	{
 		s1[c + i] = s2[i];
-	   	i++;
+		i++;
 	}
 	s1[c + i] = '\0';
 	return (s1);

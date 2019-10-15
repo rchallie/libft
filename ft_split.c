@@ -6,116 +6,104 @@
 /*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:51:19 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/11 16:20:30 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/14 16:47:04 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_hm(char const *s, char c)
+int		ft_hm(char const *s, char c)
 {
-	size_t rtn;
-	int mode;
+	size_t	nbr;
+	int		i;
 
-	rtn = 0;
-	mode = 1;
-	while (*s)
+	nbr = 0;
+	i = 0;
+	while (s[i])
 	{
-		if(*s == c && mode == 0)
+		if (s[i] == c)
 		{
-			rtn++;
-			mode = 1;
+			while (s[i] == c)
+				i++;
+			if (s[i])
+				nbr++;
 		}
-		else if(*s != c && mode == 1)
-			mode = 0;
-		s++;
+		i++;
 	}
-	return (rtn);
+	return (nbr);
 }
 
-char	**ft_rtn_init(const char *s, char c, char **rtn)
+char	**ft_mal(char **strs, char const *s, char c)
 {
-	int mode;
-	int count;
-	int i;
+	size_t	count;
+	int		i;
+	int		h;
 
-	mode = 1;
 	count = 0;
 	i = 0;
-	while (*s)
+	h = 0;
+	while (s[h])
 	{
-		if ((*s == c && mode == 0) || (mode == 0 && *(s+1) == '\0'))
+		if (s[h] != c)
+			count++;
+		else if (s[h - 1] != c && h != 0)
 		{
-			if (*(s+1) == '\0')
-				count++;
-			mode = 1;
-			rtn[i] = malloc(sizeof(char) * (count + 1));
-		   	if(!rtn[i])
+			strs[i] = malloc(sizeof(char) * (count + 1));
+			if (!strs[i])
 				return (0);
-			i++;
 			count = 0;
+			i++;
 		}
-		else if (*s != c && mode == 1)
-			mode = 0;
-		if (*s != c)
-			count++;
-		s++;
+		if (s[h + 1] == '\0' && s[h] != c)
+			if (!(strs[i] = malloc(sizeof(char) * count + 1)))
+				return (0);
+		h++;
 	}
-	return (rtn);
+	return (strs);
 }
 
-char	**ft_rtn_ins(const char *s, char c, char **rtn)
+char	**ft_cpy(char **strs, char const *s, char c)
 {
-	int mode;
-	int count;
 	int i;
+	int j;
+	int h;
 
-	mode = 1;
-	count = 0;
 	i = 0;
-	while (*s)
+	j = 0;
+	h = 0;
+	while (s[h])
 	{
-		if ((*s == c && mode == 0) || (mode == 0 && *(s+1) == '\0'))
-		{
-			if (*(s+1) == '\0')
+		if (s[h] != c)
+			strs[i][j++] = s[h];
+		else if (s[h - 1] != c)
+			if (h != 0)
 			{
-				rtn[i][count] = *s;
-				count++;
+				strs[i][j] = '\0';
+				j = 0;
+				i++;
 			}
-			mode = 1;
-			rtn[i][count] = '\0';
-			ft_putnbr(i);
-			ft_putstr (" : ");
-			ft_putstr(rtn[i]);
-			ft_putstr(", ");
-			i++;
-			count = 0;
-		}
-		else if (*s != c && mode == 1)
-			mode = 0;
-		if (*s != c)
-		{
-			rtn[i][count] = *s;
-			count++;
-		}
-		s++;
+		if (s[h + 1] == '\0' && s[h] != c)
+			strs[i][j] = '\0';
+		h++;
 	}
-	return (rtn);	
+	return (strs);
 }
 
-char	**ft_strsplit(char const *s, char c) //ATTENTION NOM
+char	**ft_split(char const *s, char c)
 {
-	char **rtn;
-	size_t nbr_w;
+	char	**rtn;
+	int		nbr_w;
 
-	if(!s)
+	if (!s)
 		return (0);
-	nbr_w = ft_hm(s,c);
-	rtn = malloc(sizeof(char *) * nbr_w + 1);
-	if(!rtn)
+	nbr_w = ft_hm(s, c);
+	rtn = malloc(sizeof(char *) * (nbr_w + 1));
+	if (!rtn)
 		return (0);
-	rtn[nbr_w] = (void *)0;
-	rtn = ft_rtn_init(s,c,rtn);
-	rtn = ft_rtn_ins(s,c,rtn);
-	return (rtn);	
+	rtn[nbr_w] = 0;
+	if (ft_mal(rtn, s, c) != 0)
+		ft_cpy(rtn, s, c);
+	else
+		return (0);
+	return (rtn);
 }
