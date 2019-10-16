@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:54:46 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/15 14:03:21 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/16 16:28:28 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,15 @@ char			*ft_strtrim(char const *s1, char const *set)
 	size_t	len;
 	char	*rtn;
 
-	if (!s1)
-		return (0);
+	if (!s1 || !set)
+		return (rtn = NULL);
 	start = ft_estim_start(s1, set);
 	end = ft_estim_end(s1, set);
 	len = (ft_strlen(s1) - (start + end));
 	if ((int)len < 0)
 	{
 		if (!(rtn = ft_snew(1)))
-			return (0);
-		else
-			rtn = "";
+			return (rtn = NULL);
 	}
 	else
 	{

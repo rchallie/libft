@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rchallie <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 11:05:52 by rchallie          #+#    #+#              #
-#    Updated: 2019/10/15 14:20:44 by rchallie         ###   ########.fr        #
+#    Updated: 2019/10/16 17:52:05 by rchallie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,17 +47,20 @@ SRCS = ft_memset.c		\
 
 NAME = libft.a
 
-CC = gcc -c
-CC_FLAGS = -Wall -Wextra -Werror
+OBJS = $(SRCS:.c=.o)	
 
-$(NAME):
+CC = gcc
+
+CC_FLAGS = -c -Wall -Wextra -Werror
+
+$(NAME): $(OBJS)
 	$(CC) $(SRCS) libft.h $(CC_FLAGS)
-	ar r $(NAME) *.o
+	ar r $(NAME) $(OBJS)
 
 all: $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 15:04:56 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/15 17:12:59 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/16 12:02:31 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	}
 	else
 	{
-		while (src[j] && ft_strlen(src) < dstsize)
+		while (src[j] && (dst_len + j) < dstsize)
 			dst[i++] = src[j++];
-		if (ft_strlen(src) + dst_len == dstsize)
+		if ((dst_len + j) == dstsize && dst_len < dstsize)
 			dst[--i] = '\0';
 		else
 			dst[i] = '\0';

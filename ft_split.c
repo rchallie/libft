@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:51:19 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/15 14:02:50 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/16 13:52:42 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,14 @@ static int		ft_hm(char const *s, char c)
 				i++;
 			if (s[i])
 				nbr++;
+			else
+				i--;
 		}
 		i++;
 	}
+	if (nbr == 0 && s[i - 1] == c)
+		return (0);
+	nbr++;
 	return (nbr);
 }
 
@@ -100,10 +105,10 @@ char			**ft_split(char const *s, char c)
 	rtn = malloc(sizeof(char *) * (nbr_w + 1));
 	if (!rtn)
 		return (0);
-	rtn[nbr_w] = 0;
 	if (ft_mal(rtn, s, c) != 0)
 		ft_cpy(rtn, s, c);
 	else
 		return (0);
+	rtn[nbr_w] = (void *)0;
 	return (rtn);
 }

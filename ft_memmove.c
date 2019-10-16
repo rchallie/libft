@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 11:01:52 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/14 16:57:08 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:52:11 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			*(d + len) = *(s + len);
 		return (dst);
 	}
-	else
-		while (len--)
-			*d++ = *s++;
+	while (len--)
+		*d++ = *s++;
 	return (dst);
 }
