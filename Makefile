@@ -6,7 +6,7 @@
 #    By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 11:05:52 by rchallie          #+#    #+#              #
-#    Updated: 2019/10/16 17:52:05 by rchallie         ###   ########.fr        #
+#    Updated: 2019/10/17 18:46:05 by rchallie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,21 @@ SRCS = ft_memset.c		\
 	   ft_putendl_fd.c	\
 	   ft_putnbr_fd.c
 
+SRCSB = ft_lstnew.c			\
+		ft_lstadd_front.c	\
+		ft_lstsize.c		\
+		ft_lstlast.c		\
+		ft_lstadd_back.c	\
+		ft_lstclear.c		\
+		ft_lstdelone.c		\
+		ft_lstiter.c		\
+		ft_lstmap.c			
+
 NAME = libft.a
 
-OBJS = $(SRCS:.c=.o)	
+OBJS = $(SRCS:.c=.o)
+
+OBJSB = $(OBJS) $(SRCSB:.c=.o)
 
 CC = gcc
 
@@ -60,9 +72,14 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJSB)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+bonus: $(OBJSB)
+	$(CC) $(SRCS) $(SRCSB) libft.h $(CC_FLAGS)
+	ar r $(NAME) $(OBJSB)
+

@@ -6,7 +6,7 @@
 /*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:51:19 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/16 13:52:42 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/22 17:29:25 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,17 @@ static int		ft_hm(char const *s, char c)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
-		{
-			while (s[i] == c)
-				i++;
-			if (s[i])
-				nbr++;
-			else
-				i--;
-		}
-		i++;
+		while (s[i] == c)
+			i++;
+		if (s[i] && s[i - 1] == c)
+			nbr++;
+		if (s[i])
+			i++;
 	}
 	if (nbr == 0 && s[i - 1] == c)
 		return (0);
-	nbr++;
+	if (s[0] != c)
+		nbr++;
 	return (nbr);
 }
 
@@ -99,8 +96,13 @@ char			**ft_split(char const *s, char c)
 	char	**rtn;
 	int		nbr_w;
 
-	if (!s)
-		return (0);
+	if (!s || !*s)
+	{
+		if (!(rtn = malloc(sizeof(char *) * 1)))
+			return (NULL);
+		*rtn = (void *)0;
+		return (rtn);
+	}
 	nbr_w = ft_hm(s, c);
 	rtn = malloc(sizeof(char *) * (nbr_w + 1));
 	if (!rtn)
@@ -108,7 +110,21 @@ char			**ft_split(char const *s, char c)
 	if (ft_mal(rtn, s, c) != 0)
 		ft_cpy(rtn, s, c);
 	else
-		return (0);
+	{
+		free(rtn);
+		return (NULL);
+	}
 	rtn[nbr_w] = (void *)0;
 	return (rtn);
+}
+
+#include <stdio.h>
+
+int main()
+{
+	char **test;
+
+	test = ft_split("",'\0');
+	ft_putstr_fd(test[0], 1);
+	return (0);
 }

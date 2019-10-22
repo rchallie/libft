@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchallie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:41:14 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/15 14:02:13 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/22 16:14:33 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	size_t	stot_len;
 	char	*rtn;
 
-	if (!s1 || !s2)
-		return (0);
+	if (!s1 && !s2)
+		return (ft_strdup(""));
+	if (s1 && !s2)
+		return (ft_strdup(s1));
+	if (!s1 && s2)
+		return (ft_strdup(s2));
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	stot_len = s1_len + s2_len + 1;
@@ -48,3 +52,5 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	rtn[stot_len - 1] = '\0';
 	return (rtn);
 }
+
+
