@@ -6,7 +6,7 @@
 /*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:51:19 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/22 17:29:25 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/23 10:19:55 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		ft_hm(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		if (s[i] && s[i - 1] == c)
+		if (i > 0 && s[i] && s[i - 1] == c)
 			nbr++;
 		if (s[i])
 			i++;
@@ -48,7 +48,7 @@ static char		**ft_mal(char **strs, char const *s, char c)
 	{
 		if (s[h] != c)
 			count++;
-		else if (s[h - 1] != c && h != 0)
+		else if (h > 0 && s[h - 1] != c)
 		{
 			strs[i] = malloc(sizeof(char) * (count + 1));
 			if (!strs[i])
@@ -77,7 +77,7 @@ static char		**ft_cpy(char **strs, char const *s, char c)
 	{
 		if (s[h] != c)
 			strs[i][j++] = s[h];
-		else if (s[h - 1] != c)
+		else if (h > 0 && s[h - 1] != c)
 			if (h != 0)
 			{
 				strs[i][j] = '\0';
@@ -116,15 +116,4 @@ char			**ft_split(char const *s, char c)
 	}
 	rtn[nbr_w] = (void *)0;
 	return (rtn);
-}
-
-#include <stdio.h>
-
-int main()
-{
-	char **test;
-
-	test = ft_split("",'\0');
-	ft_putstr_fd(test[0], 1);
-	return (0);
 }

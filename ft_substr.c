@@ -6,7 +6,7 @@
 /*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:05:40 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/22 16:12:31 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/23 10:54:58 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	if (!s)
-		return (NULL);						//MODIFIER, AIS MIS NULL
+		return (NULL);
 	if ((size_t)start > ft_strlen(s))
 		return (ft_strdup(""));
 	rtn = malloc(sizeof(char) * (len + 1));

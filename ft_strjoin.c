@@ -6,27 +6,11 @@
 /*   By: rchallie <rchallie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:41:14 by rchallie          #+#    #+#             */
-/*   Updated: 2019/10/22 16:14:33 by rchallie         ###   ########.fr       */
+/*   Updated: 2019/10/23 10:30:37 by rchallie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_cat(char *s1, const char *s2)
-{
-	int i;
-	int c;
-
-	i = 0;
-	c = ft_strlen(s1);
-	while (s2[i])
-	{
-		s1[c + i] = s2[i];
-		i++;
-	}
-	s1[c + i] = '\0';
-	return (s1);
-}
 
 char		*ft_strjoin(char const *s1, char const *s2)
 {
@@ -41,16 +25,14 @@ char		*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s1));
 	if (!s1 && s2)
 		return (ft_strdup(s2));
-	s1_len = ft_strlen(s1);
+	s1_len = ft_strlen((char *)s1);
 	s2_len = ft_strlen(s2);
 	stot_len = s1_len + s2_len + 1;
 	rtn = malloc(sizeof(char) * stot_len);
 	if (!rtn)
 		return (0);
-	ft_strlcpy(rtn, s1, s1_len);
-	ft_cat(rtn, s2);
+	ft_memmove(rtn, s1, s1_len);
+	ft_memmove(rtn + s1_len, s2, s2_len);
 	rtn[stot_len - 1] = '\0';
 	return (rtn);
 }
-
-
