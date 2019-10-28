@@ -1,7 +1,7 @@
 # libft
 Libft (42cursus) 2019-2020
 
-Actual Status : finished
+Actual Status : finished.
 Result        : 115%
 
 Observations : (null)
