@@ -18,11 +18,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	c;
 	size_t	n_len;
 	char	*hay;
-	char	*need;
 
 	i = 0;
 	hay = (char *)haystack;
-	need = (char *)needle;
 	n_len = ft_strlen(needle);
 	if (n_len == 0 || haystack == needle)
 		return (hay);
